@@ -1,0 +1,208 @@
+body {
+  background-color: #f9f9f9;
+}
+
+.container {
+  display: inline-flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: #F0F0F0;
+  height: 22rem;
+  border-radius: 5%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.mode {
+  display: flex;
+  width: 70%; 
+  justify-content: space-between;
+}
+
+.mode div {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, rgba(67,113,168,1) 0%, rgba(4,98,195,1) 44%, rgba(0,82,168,1) 53%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.cover {
+  position: absolute;
+  top: 1%;
+  width: 15rem;
+  height: 10rem;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.dice {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-row-gap: 0.75rem;
+  grid-column-gap: 0.5rem;
+  justify-content: space-between;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+}
+
+.die {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 10%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.num {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dot {
+  background-color: black;
+  border-radius: 50%;
+  width: 8px; 
+  height: 8px;
+  place-self: center;
+  pointer-events: none;
+}
+
+.top {
+  grid-row-start: 1
+}
+
+.center {
+  grid-row-start: 2
+}
+
+.bottom {
+  grid-row-start: 3
+}
+
+.left {
+  grid-column-start: 1
+}
+
+.middle {
+  grid-column-start: 2
+}
+
+.right {
+  grid-column-start: 3
+}
+
+.time {
+  font-size: 2rem;
+  margin-top: -0.5rem;
+  transition: all 0.5s;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  margin-top: -0.5rem;
+  border-radius: 10%;
+  width: 6rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(110,160,221,1) 0%, rgba(14,99,186,1) 44%, rgba(0,95,194,1) 53%);
+  color: #f8f8ff;
+  border-style: none;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.record {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  font-size: 1.4rem;
+  gap: 0.5rem;
+}
+
+.record div {
+  transition: all 0.5s;
+}
+
+.winAnimation1 {
+  animation-name: win1;
+  animation-duration: 1.5s;
+}
+
+.winAnimation2 {
+  animation-name: win2;
+  animation-duration: 1.5s;
+}
+
+.rollAnimation1 {
+  animation-name: roll1;
+  animation-duration: 0.3s;
+}
+
+.rollAnimation2 {
+  animation-name: roll2;
+  animation-duration: 0.3s;
+}
+
+@keyframes win1 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, 5px) rotate(5deg); }
+  50% { transform: translate(0, 0) rotate(0eg); }
+  75% { transform: translate(-5px, 5px) rotate(-5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes win2 {
+  0% { transform: translateX(0) }
+  25% { transform: translateY(-9px) }
+  35% { transform: translateY(-9px) rotate(17deg) }
+  55% { transform: translateY(-9px) rotate(-17deg) }
+  65% { transform: translateY(-9px) rotate(17deg) }
+  75% { transform: translateY(-9px) rotate(-17deg) }
+  100% { transform: translateY(0) rotate(0) }
+}
+
+@keyframes roll1 {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-15deg); }
+  20% { transform: translate(-3px, 0px) rotate(15deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(15deg); }
+  50% { transform: translate(-1px, 2px) rotate(-15deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-15deg); }
+  80% { transform: translate(-1px, -1px) rotate(5deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-15deg); }
+}
+
+@keyframes roll2 {
+  0% { transform: translate(-1px, -1px) rotate(-15deg); }
+  10% { transform: translate(1px, 2px) rotate(0); }
+  20% { transform: translate(3px, 0px) rotate(0deg); }
+  30% { transform: translate(-3px, -2px) rotate(15deg); }
+  40% { transform: translate(-1px, 1px) rotate(-15deg); }
+  50% { transform: translate(1px, -2px) rotate(15deg); }
+  60% { transform: translate(3px, -1px) rotate(-15deg); }
+  70% { transform: translate(-3px, -1px) rotate(0deg); }
+  80% { transform: translate(1px, 1px) rotate(0deg); }
+  90% { transform: translate(-1px, -2px) rotate(15deg); }
+  100% { transform: translate(-1px, 2px) rotate(15deg); }
+}
